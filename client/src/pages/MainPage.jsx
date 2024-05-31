@@ -1,17 +1,29 @@
-// src/pages/MainPage.js
-import React from "react";
+import React, { useContext } from "react";
 import Calendar from "../components/Calendar";
 import DreamInput from "../components/DreamInput";
 import Interpretations from "../components/Interpretations";
 import ReactionsInput from "../components/ReactionsInput";
 import useCalendarSelection from "../hooks/useCalendarSelection";
 import useReactions from "../hooks/useReactions";
-import useDreamInput from "../hooks/useDreamInput"; // Import useDreamInput
+import useDreamInput from "../hooks/useDreamInput";
+import { AuthContext } from "../contexts/AuthContext";
 
 const MainPage = () => {
+  const { user } = useContext(AuthContext);
   const { showInput, close, selectedDate, handleSelect } = useCalendarSelection();
   const { selectedReaction, handleReactionSelect } = useReactions();
-  const { inputValue, handleChange, handleSaveDream, noteId } = useDreamInput(selectedDate, selectedReaction); // Destructure noteId from useDreamInput
+  const { inputValue, handleChange, handleSaveDream, noteId } = useDreamInput(selectedDate, selectedReaction);
+
+  if (!user) {
+    return (
+      <div style={{ padding: 24, margin: 0, minHeight: 280 }}>
+        <h2 style={{ color: "#F6B17A" }}>Welcome to Dream Journal</h2>
+        <p style={{ color: "#F6B17A" }}>
+          Please <a href="/login">Login</a> or <a href="/register">Register</a> to continue.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -23,16 +35,16 @@ const MainPage = () => {
               selectedDate={selectedDate}
               close={close}
               selectedReaction={selectedReaction}
-              inputValue={inputValue} // Pass inputValue to DreamInput
-              handleChange={handleChange} // Pass handleChange to DreamInput
-              handleSaveDream={handleSaveDream} // Pass handleSaveDream to DreamInput
+              inputValue={inputValue}
+              handleChange={handleChange}
+              handleSaveDream={handleSaveDream}
             />
             <div style={{ backgroundColor: "#7077A1", marginLeft: 10, borderRadius: "10px", padding: 5 }}>
               <Interpretations noteId={noteId} />
             </div>
           </div>
           <div style={{ marginTop: 10, borderRadius: "10px" }}>
-          <h3 style={{color:"#F6B17A"}}>How was your dream?</h3>
+            <h3 style={{ color: "#F6B17A" }}>How was your dream?</h3>
             <ReactionsInput
               handleReactionSelect={handleReactionSelect}
               selectedReaction={selectedReaction}

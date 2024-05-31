@@ -9,7 +9,7 @@ const Footer = () => {
 
     return (
         <AntFooter style={{ textAlign: "center", backgroundColor: "#424769", color: "#F6B17A"}}>
-            Dream Journal ©{currentYear} Created by Roman Shvydko
+            DreamTracker ©{currentYear} Created by Roman Shvydko
         </AntFooter>
     );
 };
