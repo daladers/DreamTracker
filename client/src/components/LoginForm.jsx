@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Form form={form} onFinish={onFinish}>
+    <Form form={form} onFinish={onFinish} style={{background: "#7077A1", borderRadius:10}}>
       <Form.Item
         label="Username"
         name="username"

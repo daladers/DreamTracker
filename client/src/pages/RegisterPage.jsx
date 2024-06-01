@@ -4,7 +4,7 @@ import RegisterForm from '../components/RegisterForm';
 
 const RegisterPage = () => (
   <div>
-    <h2>Register</h2>
+    <h2 style={{ color: "#F6B17A", marginTop: "10px" }}>Register</h2>
     <RegisterForm />
   </div>
 );

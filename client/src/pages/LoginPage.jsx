@@ -4,7 +4,7 @@ import LoginForm from '../components/LoginForm';
 
 const LoginPage = () => (
   <div>
-    <h2>Login</h2>
+    <h2 style={{ color: "#F6B17A", marginTop: "10px" }}>Login</h2>
     <LoginForm />
   </div>
 );

@@ -33,15 +33,21 @@ router.get('/get', async (req, res) => {
     });
 
     const reactionCounts = notes.reduce((acc, note) => {
+      if (!note.reactions) return acc;
+
       let reactions;
       try {
         reactions = JSON.parse(note.reactions);
+        if (!Array.isArray(reactions)) {
+          reactions = [reactions];
+        }
       } catch (e) {
         // If parsing fails, assume it's a simple string
         reactions = [note.reactions];
       }
-      
+
       reactions.forEach(reaction => {
+        if (!reaction) return; // Skip if reaction is null or undefined
         acc[reaction] = (acc[reaction] || 0) + 1;
       });
 

@@ -47,7 +47,7 @@ const useDreamInput = (selectedDate, selectedReaction) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Dream saved:', response.data);
-      setInputValue(''); // Clear input after saving
+      setInputValue(response.data.text);
       setNoteId(response.data.note_id); // Update noteId after saving
     } catch (error) {
       console.error('Error saving dream:', error);
