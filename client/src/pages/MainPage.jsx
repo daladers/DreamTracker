@@ -17,7 +17,7 @@ const MainPage = () => {
   if (!user) {
     return (
       <div style={{ padding: 24, margin: 0, minHeight: 280 }}>
-        <h2 style={{ color: "#F6B17A" }}>Welcome to Dream Journal</h2>
+        <h2 style={{ color: "#F6B17A" }}>Welcome to DreamTracker</h2>
         <p style={{ color: "#F6B17A" }}>
           Please <a href="/login">Login</a> or <a href="/register">Register</a> to continue.
         </p>
@@ -27,6 +27,7 @@ const MainPage = () => {
 
   return (
     <div>
+      <h2 style={{ color: "#F6B17A" }}>Save your dreams!</h2>
       <Calendar onSelect={handleSelect} style={{ borderRadius: "10px" }} />
       {showInput && (
         <div style={{ borderRadius: "10px" }}>

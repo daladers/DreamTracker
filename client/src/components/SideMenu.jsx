@@ -15,6 +15,11 @@ const SideMenu = ({ collapsed }) => {
       icon: <HomeIcon />,
     },
     {
+      key: "/chart",
+      label: "Chart",
+      icon: <BarChartIcon />,
+    },
+    {
       key: "/login",
       label: "Login",
       icon: <LoginIcon />,
@@ -24,11 +29,7 @@ const SideMenu = ({ collapsed }) => {
       label: "Register",
       icon: <AppRegistrationIcon />,
     },
-    {
-      key: "/chart",
-      label: "Chart",
-      icon: <BarChartIcon />,
-    },
+
   ];
 
   const onClick = (e) => {

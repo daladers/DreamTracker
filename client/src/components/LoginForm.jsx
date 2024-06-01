@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Alert } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useLoginForm } from "../hooks/useLoginForm";
 
@@ -7,14 +7,20 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const { form, handleUsernameChange, handlePasswordChange, handleSubmit } =
     useLoginForm();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onFinish = (values) => {
-    handleSubmit(values);
-    navigate("/");
+    const isSuccess = handleSubmit(values);
+    if (isSuccess) {
+      navigate("/");
+    } else {
+      setErrorMessage("Username or password incorrect");
+    }
   };
 
   return (
-    <Form form={form} onFinish={onFinish} style={{background: "#7077A1", borderRadius:10}}>
+    <Form form={form} onFinish={onFinish} style={{ background: "#7077A1", borderRadius: 10, marginTop: 10 }}>
+      {errorMessage && <Alert message={errorMessage} type="error" />}
       <Form.Item
         label="Username"
         name="username"

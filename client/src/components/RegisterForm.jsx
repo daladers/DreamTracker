@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Alert } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useRegisterForm } from "../hooks/useRegisterForm";
 
@@ -16,13 +16,20 @@ const RegisterForm = () => {
         handleSubmit,
     } = useRegisterForm();
 
+    const [errorMessage, setErrorMessage] = useState("");
+    
     const onFinish = (values) => {
-        handleSubmit(values);
-        navigate("/");
+        const isSuccess = handleSubmit(values);
+        if (isSuccess) {
+          navigate("/");
+        } else {
+          setErrorMessage("User already exsists");
+        }
     };
 
     return (
         <Form form={form} onFinish={onFinish} style={{background: "#7077A1", borderRadius:10}}>
+            {errorMessage && <Alert message={errorMessage} type="error" />}
             <Form.Item
                 label="Username"
                 name="username"
