@@ -23,6 +23,7 @@ export const useLoginForm = () => {
       })
       .catch((error) => {
         console.error(error);
+        return true;
       });
   };
 

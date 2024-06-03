@@ -62,17 +62,17 @@ const Chart = ({ startDate, endDate, userId }) => {
       title: {
         display: true,
         text: 'Reaction Statistics',
-        color: '#F6B17A', // Change this to your desired color
+        color: '#F6B17A', 
       },
       legend: {
         labels: {
-          color: '#F6B17A', // Change this to your desired color
+          color: '#F6B17A', 
         }
       },
       tooltip: {
-        titleColor: '#F6B17A', // Change this to your desired color
-        bodyColor: '#F6B17A', // Change this to your desired color
-        footerColor: '#F6B17A' // Change this to your desired color
+        titleColor: '#F6B17A', 
+        bodyColor: '#F6B17A',
+        footerColor: '#F6B17A'
       }
     }
   };

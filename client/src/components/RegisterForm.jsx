@@ -19,8 +19,8 @@ const RegisterForm = () => {
     const [errorMessage, setErrorMessage] = useState("");
     
     const onFinish = (values) => {
-        const isSuccess = handleSubmit(values);
-        if (isSuccess) {
+        handleSubmit(values);
+        if (!console.error) {
           navigate("/");
         } else {
           setErrorMessage("User already exsists");
