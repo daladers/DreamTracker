@@ -9,6 +9,7 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ChartPage from './pages/ChartPage';
+import ProfilePage from './pages/ProfilePage';
 
 const { Content, Sider } = Layout;
 
@@ -42,6 +43,7 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/chart" element={<ChartPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Routes>
             </Content>
             <Footer style={{backgroundColor: '#424769'}} />

@@ -1,4 +1,3 @@
-// controllers/noteController.js
 const { Op } = require('sequelize');
 const db = require('../models');
 const note = db.models.note;
@@ -11,7 +10,7 @@ const getNoteInterpretations = async (req, res) => {
       return res.status(400).json({ error: 'Note or note text is missing' });
     }
   
-    const wordsInNote = note.text.split(/\s+/); // Split text into words
+    const wordsInNote = note.text.split(/\s+/); 
   
     try {
       const interpretations = await interpretation.findAll({
@@ -36,12 +35,11 @@ const getNoteInterpretations = async (req, res) => {
 const saveNote = async (req, res) => {
     const { text, reactions, date, user_id } = req.body;
     try {
-                // Parse the incoming date string to a Date object
                 const startOfDay = new Date(date);
-                startOfDay.setUTCHours(0, 0, 0, 0); // Set to the start of the day (UTC)
+                startOfDay.setUTCHours(0, 0, 0, 0); 
                 
                 const endOfDay = new Date(date);
-                endOfDay.setUTCHours(23, 59, 59, 999); // Set to the end of the day (UTC)
+                endOfDay.setUTCHours(23, 59, 59, 999); 
 
         const existingNote = await note.findOne({
             where: {
@@ -70,12 +68,11 @@ const getNote = async (req, res) => {
     const { userId, date } = req.query;
 
     try {
-        // Parse the incoming date string to a Date object
         const startOfDay = new Date(date);
-        startOfDay.setUTCHours(0, 0, 0, 0); // Set to the start of the day (UTC)
+        startOfDay.setUTCHours(0, 0, 0, 0); 
         
         const endOfDay = new Date(date);
-        endOfDay.setUTCHours(23, 59, 59, 999); // Set to the end of the day (UTC)
+        endOfDay.setUTCHours(23, 59, 59, 999);
 
         const notes = await note.findAll({
             where: {
@@ -93,5 +90,21 @@ const getNote = async (req, res) => {
     }
 };
 
+const getAllNotes = async (req, res) => {
+  const { userId } = req.query;
 
-module.exports = { getNoteInterpretations, saveNote, getNote };
+  try {
+      const notes = await note.findAll({
+          where: {
+              user_id: userId,
+          },
+          attributes: ['text', 'reactions', 'date', 'note_id'],
+      });
+
+      res.json(notes);
+  } catch (error) {
+      res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { getNoteInterpretations, saveNote, getNote, getAllNotes };

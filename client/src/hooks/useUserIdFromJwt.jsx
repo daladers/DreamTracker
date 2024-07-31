@@ -11,7 +11,6 @@ const useUserIdFromJwt = () => {
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.user_id; // Adjust the key as per your JWT structure
         setUserId(userId);
-        console.log('User ID:', userId);
       } catch (error) {
         console.error('Failed to decode JWT', error);
         setUserId(null);

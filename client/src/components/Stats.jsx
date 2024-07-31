@@ -2,8 +2,8 @@ import React from "react";
 import useStats from "../hooks/useStats";
 
 
-const Stats = ({ startDate, endDate, userId }) => { // Receive userId as a prop
-  const { stats, loading, error } = useStats(startDate, endDate, userId); // Pass userId to useStats
+const Stats = ({ startDate, endDate, userId }) => { 
+  const { stats, loading, error } = useStats(startDate, endDate, userId);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

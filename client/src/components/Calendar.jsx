@@ -1,4 +1,3 @@
-// src/components/Calendar.js
 import React from 'react';
 import { Calendar as AntCalendar } from 'antd';
 

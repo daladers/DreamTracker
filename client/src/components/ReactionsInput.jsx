@@ -1,4 +1,3 @@
-// src/components/ReactionsInput.js
 import React from "react";
 import { ReactionBarSelector } from "@charkour/react-reactions";
 

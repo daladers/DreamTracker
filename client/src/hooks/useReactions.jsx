@@ -1,4 +1,3 @@
-// src/hooks/useReactions.js
 import { useState } from 'react';
 
 const useReactions = () => {
@@ -6,7 +5,6 @@ const useReactions = () => {
 
   const handleReactionSelect = (reaction) => {
     setSelectedReaction(reaction);
-    console.log('Reaction selected:', reaction);
   };
 
   return {

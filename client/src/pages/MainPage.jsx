@@ -41,7 +41,7 @@ const MainPage = () => {
               handleSaveDream={handleSaveDream}
             />
             <div style={{ backgroundColor: "#7077A1", marginLeft: 10, borderRadius: "10px", padding: 5 }}>
-              <Interpretations noteId={noteId} />
+              <Interpretations noteId={noteId} key={noteId} />
             </div>
           </div>
           <div style={{ marginTop: 10, borderRadius: "10px" }}>

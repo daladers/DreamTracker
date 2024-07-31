@@ -8,10 +8,10 @@ const LoginForm = () => {
   const { form, handleUsernameChange, handlePasswordChange, handleSubmit } =
     useLoginForm();
   const [errorMessage, setErrorMessage] = useState("");
-
-  const onFinish = (values) => {
-    handleSubmit(values);
-    if (!console.error) {
+  
+  const onFinish = async (values) => {
+    const result = await handleSubmit(values);
+    if (result.success) { 
       navigate("/");
     } else {
       setErrorMessage("Username or password incorrect");

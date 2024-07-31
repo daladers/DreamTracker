@@ -1,13 +1,12 @@
-// src/hooks/useDreamInput.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useUserIdFromJwt from './useUserIdFromJwt.jsx';
 
 const useDreamInput = (selectedDate, selectedReaction) => {
   const [inputValue, setInputValue] = useState('');
-  const [noteId, setNoteId] = useState(null); // Add state for noteId
+  const [noteId, setNoteId] = useState(null); 
   const userId = useUserIdFromJwt();
-  const token = localStorage.getItem('token'); // Retrieve JWT token
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -19,10 +18,10 @@ const useDreamInput = (selectedDate, selectedReaction) => {
           });
           if (response.data && response.data.length > 0 && response.data[0].text) {
             setInputValue(response.data[0].text);
-            setNoteId(response.data[0].note_id); // Set the noteId
+            setNoteId(response.data[0].note_id);
           } else {
-            setInputValue(''); // Clear input if no note is found
-            setNoteId(null); // Clear noteId if no note is found
+            setInputValue(''); 
+            setNoteId(null);
           }
         } catch (error) {
           console.error('Error fetching note:', error);
@@ -40,7 +39,7 @@ const useDreamInput = (selectedDate, selectedReaction) => {
     try {
       const response = await axios.post('http://localhost:5000/note/save', {
         text: inputValue,
-        reactions: selectedReaction, // Save the selected reaction
+        reactions: selectedReaction, 
         date: selectedDate,
         user_id: userId,
       }, {
@@ -48,7 +47,7 @@ const useDreamInput = (selectedDate, selectedReaction) => {
       });
       console.log('Dream saved:', response.data);
       setInputValue(response.data.text);
-      setNoteId(response.data.note_id); // Update noteId after saving
+      setNoteId(response.data.note_id);
     } catch (error) {
       console.error('Error saving dream:', error);
     }
@@ -58,7 +57,7 @@ const useDreamInput = (selectedDate, selectedReaction) => {
     inputValue,
     handleChange,
     handleSaveDream,
-    noteId, // Return noteId
+    noteId, 
   };
 };
 

@@ -1,4 +1,3 @@
-// src/hooks/useInterpretations.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -9,10 +8,14 @@ const useInterpretations = (noteId) => {
 
   useEffect(() => {
     const fetchInterpretations = async () => {
-      if (!noteId) return;
-      
+      if (!noteId) {
+        setInterpretations([]);
+        setLoading(false);
+        return;
+      }
+
       try {
-        const token = localStorage.getItem('token'); // Retrieve JWT token
+        const token = localStorage.getItem('token');
         const response = await axios.get(`http://localhost:5000/note/getInterpretation/${noteId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });

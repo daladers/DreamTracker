@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     user_id: {
@@ -7,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -19,6 +24,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userImage: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '/uploads/default-avatar.png',
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   }, {
     tableName: 'users',
     timestamps: false,
@@ -27,5 +41,5 @@ module.exports = (sequelize, DataTypes) => {
     user.password = await bcrypt.hash(user.password, 10);
   });
 
-return user;
+  return user;
 };

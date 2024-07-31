@@ -1,4 +1,3 @@
-// src/components/DreamInput.js
 import React from "react";
 import { Input, Button } from "antd";
 

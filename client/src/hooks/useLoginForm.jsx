@@ -15,16 +15,15 @@ export const useLoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (data) => {
-    axios
-      .post("http://localhost:5000/auth/login", { username, password })
-      .then((response) => {
-        login(response.data.token);
-      })
-      .catch((error) => {
-        console.error(error);
-        return true;
-      });
+  const handleSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:5000/auth/login", { username, password });
+      login(response.data.token);
+      return { success: true };
+    } catch (error) {
+      console.error(error);
+      return { success: false, error };
+    }
   };
 
   return {

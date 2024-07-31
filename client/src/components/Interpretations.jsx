@@ -1,4 +1,3 @@
-// src/components/Interpretations.js
 import React from "react";
 import useInterpretations from '../hooks/useInterpretations';
 

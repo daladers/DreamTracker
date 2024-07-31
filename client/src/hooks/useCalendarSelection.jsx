@@ -1,4 +1,3 @@
-// src/hooks/useCalendarSelection.js
 import { useState } from 'react';
 
 const useCalendarSelection = () => {

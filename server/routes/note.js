@@ -1,4 +1,3 @@
-// routes/noteRoutes.js
 const express = require('express');
 const { getNoteInterpretations, saveNote, getNote } = require('../controllers/note');
 const { authenticateToken, authorizeNoteAccess } = require('../middleware/auth');
